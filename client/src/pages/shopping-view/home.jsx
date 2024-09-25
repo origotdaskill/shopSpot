@@ -31,6 +31,7 @@ import { useToast } from "@/components/ui/use-toast";
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import { getFeatureImages } from "@/store/common-slice";
 
+
 const categoriesWithIcon = [
   { id: "men", label: "Men", icon: ShirtIcon },
   { id: "women", label: "Women", icon: CloudLightning },
@@ -40,12 +41,12 @@ const categoriesWithIcon = [
 ];
 
 const brandsWithIcon = [
-  { id: "nike", label: "Nike", icon: Shirt },
-  { id: "adidas", label: "Adidas", icon: WashingMachine },
-  { id: "puma", label: "Puma", icon: ShoppingBasket },
-  { id: "levi", label: "Levi's", icon: Airplay },
-  { id: "zara", label: "Zara", icon: Images },
-  { id: "h&m", label: "H&M", icon: Heater },
+  { id: "nike", label: "Nike", icon: "/brands/nike.svg" },
+  { id: "adidas", label: "Adidas", icon: "/brands/adidas.svg" },
+  { id: "puma", label: "Puma", icon: "/brands/puma.svg" },
+  { id: "levi", label: "Levi's", icon: "/brands/levis.svg" },
+  { id: "zara", label: "Zara", icon: "/brands/zara.svg" },
+  { id: "h&m", label: "H&M", icon: "/brands/hm.svg" },
 ];
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
