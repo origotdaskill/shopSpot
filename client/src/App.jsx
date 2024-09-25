@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AuthLayout from "./components/auth/layout";
 import AuthLogin from "./pages/auth/login";
 import AuthRegister from "./pages/auth/register";
@@ -33,17 +33,25 @@ function App() {
     dispatch(checkAuth());
   }, [dispatch]);
 
-  // While loading auth status, show skeleton/loading UI
-  if (isLoading) return <Skeleton className="w-[800px] bg-black h-[600px]" />;
+  if (isLoading) return <Skeleton className="w-[800] bg-black h-[600px]" />;
+
+  console.log(isLoading, user);
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">
-      <Routes>
+       <Routes>
         {/* Public Route for Home */}
-        <Route path="/" element={isAuthenticated ? <ShoppingHome /> : <Navigate to="/auth/login" />} />
-
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? <ShoppingHome /> : <Navigate to="/auth/login" />
+          }
+        />
         {/* Authentication Routes */}
-        <Route path="/auth" element={!isAuthenticated ? <AuthLayout /> : <Navigate to="/" />}>
+        <Route
+          path="/auth"
+          element={!isAuthenticated ? <AuthLayout /> : <Navigate to="/" />}
+        >
           <Route path="login" element={<AuthLogin />} />
           <Route path="register" element={<AuthRegister />} />
         </Route>
@@ -64,11 +72,11 @@ function App() {
           <Route path="orders" element={<AdminOrders />} />
           <Route path="features" element={<AdminFeatures />} />
         </Route>
-
-        {/* User/Shop Routes */}
         <Route
           path="/shop"
-          element={isAuthenticated ? <ShoppingLayout /> : <Navigate to="/auth/login" />}
+          element={
+            isAuthenticated ? <ShoppingLayout /> : <Navigate to="/auth/login" />
+          }
         >
           <Route path="home" element={<ShoppingHome />} />
           <Route path="listing" element={<ShoppingListing />} />
@@ -78,11 +86,7 @@ function App() {
           <Route path="payment-success" element={<PaymentSuccessPage />} />
           <Route path="search" element={<SearchProducts />} />
         </Route>
-
-        {/* Unauthorized Page */}
         <Route path="/unauth-page" element={<UnauthPage />} />
-
-        {/* Catch-all Route for Not Found */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
@@ -90,3 +94,7 @@ function App() {
 }
 
 export default App;
+
+
+
+
