@@ -39,32 +39,33 @@ function App() {
 
   return (
     <div className="flex flex-col overflow-hidden bg-white">
-       <Routes>
-        {/* Public Route for Home */}
+      <Routes>
         <Route
           path="/"
           element={
-            isAuthenticated ? <ShoppingHome /> : <Navigate to="/auth/login" />
+            <CheckAuth
+              isAuthenticated={isAuthenticated}
+              user={user}
+            ></CheckAuth>
           }
         />
-        {/* Authentication Routes */}
         <Route
           path="/auth"
-          element={!isAuthenticated ? <AuthLayout /> : <Navigate to="/" />}
+          element={
+            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+              <AuthLayout />
+            </CheckAuth>
+          }
         >
           <Route path="login" element={<AuthLogin />} />
           <Route path="register" element={<AuthRegister />} />
         </Route>
-
-        {/* Admin Routes */}
         <Route
           path="/admin"
           element={
-            isAuthenticated && user?.role === "admin" ? (
+            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
               <AdminLayout />
-            ) : (
-              <Navigate to="/unauth-page" />
-            )
+            </CheckAuth>
           }
         >
           <Route path="dashboard" element={<AdminDashboard />} />
@@ -75,7 +76,9 @@ function App() {
         <Route
           path="/shop"
           element={
-            isAuthenticated ? <ShoppingLayout /> : <Navigate to="/auth/login" />
+            <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+              <ShoppingLayout />
+            </CheckAuth>
           }
         >
           <Route path="home" element={<ShoppingHome />} />
@@ -94,7 +97,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
