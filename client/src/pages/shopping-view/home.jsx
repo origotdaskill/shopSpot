@@ -13,7 +13,7 @@ import {
   Shirt,
   ShirtIcon,
   ShoppingBasket,
-  UmbrellaIcon,
+  footprints,
   WashingMachine,
   WatchIcon,
 } from "lucide-react";
@@ -32,11 +32,11 @@ import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import { getFeatureImages } from "@/store/common-slice";
 
 const categoriesWithIcon = [
-  { id: "men", label: "Men", icon: ShirtIcon },
-  { id: "women", label: "Women", icon: CloudLightning },
-  { id: "kids", label: "Kids", icon: BabyIcon },
-  { id: "accessories", label: "Accessories", icon: WatchIcon },
-  { id: "footwear", label: "Footwear", icon: UmbrellaIcon },
+  { id: "men", label: "Men", icon: "/brands/men.svg" },
+  { id: "women", label: "Women", icon: "/brands/women.svg" },
+  { id: "kids", label: "Kids", icon: "/brands/kids.svg" },
+  { id: "accessories", label: "Accessories", icon: "/brands/Accessories.svg" },
+  { id: "footwear", label: "Footwear", icon: "/brands/Footwear.svg" },
 ];
 
 const brandsWithIcon = [
@@ -175,7 +175,11 @@ function ShoppingHome() {
                 className="cursor-pointer hover:shadow-lg transition-shadow"
               >
                 <CardContent className="flex flex-col items-center justify-center p-6">
-                  <categoryItem.icon className="w-12 h-12 mb-4 text-primary" />
+                  <img
+                    src={categoryItem.icon}
+                    alt={`${categoryItem.label} logo`}
+                    className="w-12 h-12 mb-4"
+                  />
                   <span className="font-bold">{categoryItem.label}</span>
                 </CardContent>
               </Card>
