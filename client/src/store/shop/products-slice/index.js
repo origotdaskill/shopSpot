@@ -18,7 +18,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
     });
 
     const result = await axios.get(
-      `https://shopspot-mgbu.onrender.com//api/shop/products/get?${query}`
+      `https://shopspot-mgbu.onrender.com/api/shop/products/get?${query}`
     );
 
     console.log(result);
@@ -31,7 +31,7 @@ export const fetchProductDetails = createAsyncThunk(
   "/products/fetchProductDetails",
   async (id) => {
     const result = await axios.get(
-      `https://shopspot-mgbu.onrender.com//api/shop/products/get/${id}`
+      `https://shopspot-mgbu.onrender.com/api/shop/products/get/${id}`
     );
 
     return result?.data;

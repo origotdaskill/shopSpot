@@ -10,7 +10,7 @@ export const getSearchResults = createAsyncThunk(
   "/order/getSearchResults",
   async (keyword) => {
     const response = await axios.get(
-      `https://shopspot-mgbu.onrender.com//api/shop/search/${keyword}`
+      `https://shopspot-mgbu.onrender.com/api/shop/search/${keyword}`
     );
 
     return response.data;
