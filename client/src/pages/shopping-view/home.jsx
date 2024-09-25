@@ -36,7 +36,7 @@ const categoriesWithIcon = [
   { id: "women", label: "Women", icon: "/brands/women.svg" },
   { id: "kids", label: "Kids", icon: "/brands/kids.svg" },
   { id: "accessories", label: "Accessories", icon: "/brands/Accessories.svg" },
-  { id: "footwear", label: "Footwear", icon: "/brands/Footwear.svg" },
+  { id: "footwear", label: "Footwear", icon: "/brands/footwear.svg" },
 ];
 
 const brandsWithIcon = [
